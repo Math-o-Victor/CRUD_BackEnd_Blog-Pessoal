@@ -29,8 +29,8 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		 // usuario em memoria-novo
 		 auth.inMemoryAuthentication()
-			.withUser("root")
-			.password(passwordEncoder().encode("root"))
+			.withUser("admatheus")
+			.password(passwordEncoder().encode("bichico11"))
 			.authorities("ROLE_USER");
 
 	}

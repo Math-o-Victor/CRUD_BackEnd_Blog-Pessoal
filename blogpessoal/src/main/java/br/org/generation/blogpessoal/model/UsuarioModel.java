@@ -24,10 +24,10 @@ public class UsuarioModel {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Long id;
 
-		@NotNull(message = "O atributo Nome é Obrigatório!")
+		@NotNull(message = "O Nome é Obrigatório!")
 		private String nome;
 
-		@NotNull(message = "O atributo Usuário é Obrigatório!")
+		@NotNull(message = "O Username é Obrigatório!")
 		@Email(message = "O atributo Usuário deve ser um email válido!")
 		private String usuario;
 
