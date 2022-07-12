@@ -10,6 +10,4 @@ public interface PostagemRepository extends JpaRepository<Postagem, Long>{
 
 		Object findAllByTituloContainingIgnoreCase(String titulo);
 
-		
-
 }
