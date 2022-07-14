@@ -16,23 +16,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
 	@Autowired
 	private UserDetailsService userDetailsService;
-
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		//video
-		 auth.userDetailsService(userDetailsService);
-
-		 // usuario em memoria-novo
-		 auth.inMemoryAuthentication()
-			.withUser("admatheus")
-			.password(passwordEncoder().encode("bichico11"))
-			.authorities("ROLE_USER");
-
+		auth.userDetailsService(userDetailsService);
+		
+		auth.inMemoryAuthentication()
+		.withUser("root")
+		.password(passwordEncoder().encode("root"))
+		.authorities("ROLE_USER");
 	}
 
 	@Bean
@@ -40,17 +35,17 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 
-	 @Override
+	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
 			.antMatchers("/usuarios/logar").permitAll()
 			.antMatchers("/usuarios/cadastrar").permitAll()
-			.antMatchers(HttpMethod.OPTIONS).permitAll()
+	.antMatchers(HttpMethod.OPTIONS).permitAll()
 			.anyRequest().authenticated()
 			.and().httpBasic()
 			.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 			.and().cors()
-			.and().csrf().disable();		
+			.and().csrf().disable();
 	}
 }
