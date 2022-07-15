@@ -35,9 +35,7 @@ import br.org.generation.blogpessoal.service.UsuarioService;
 
 		@GetMapping("/all")
 		public ResponseEntity <List<UsuarioModel>> getAll(){
-
 			return ResponseEntity.ok(usuarioRepository.findAll());
-
 		}
 
 		@GetMapping("/{id}")
